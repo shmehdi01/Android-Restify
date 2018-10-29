@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Restifiy.iml" filepath="$PROJECT_DIR$/Restifiy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Riztokit/Riztokit.iml" filepath="$PROJECT_DIR$/Riztokit/Riztokit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RestifyAndroid/RestifyAndroid.iml" filepath="$PROJECT_DIR$/RestifyAndroid/RestifyAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
