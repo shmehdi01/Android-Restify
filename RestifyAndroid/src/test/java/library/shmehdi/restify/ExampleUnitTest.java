@@ -1,4 +1,4 @@
-package com.shaistech.restify;
+package library.shmehdi.restify;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.shaistech.restify;
+package library.shmehdi.restify;
 
 import android.content.Context;
 import android.util.Log;
@@ -31,6 +31,12 @@ public class Service<T>{
 
     public final static int GET = 0;
     public final static int POST = 1;
+    public final static int PUT = 2;
+    public final static int DELETE = 3;
+    public final static int HEAD = 4;
+    public final static int OPTIONS = 5;
+    public final static int TRACE = 6;
+    public final static int PATCH = 7;
 
     /**
      * This is a {@value GET} request method.
@@ -83,6 +89,38 @@ public class Service<T>{
             protected Map<String, String> getParams() throws AuthFailureError {
                 return params;
             }
+
+
+        };
+
+
+        VolleySingleTon.getInstance(context).addToRequesQue(request);
+    }
+
+    public void postRequest(Context context, final String url, final Map<String,String > params, final Map<String,String > headers, final Parser<T> parser , final Response<T> listener){
+
+
+        StringRequest request = new StringRequest(1, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i(TAG,response);
+                if(parser != null)listener.onServerResponse(parser.parse(response), response,url); else listener.onServerResponse(null,response,url);
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return headers;
+            }
         };
 
 
@@ -97,7 +135,7 @@ public class Service<T>{
      * It will response {@link Response} with your model,json, and url.
      * */
 
-    public void jsonReqest(int method, Context context, final String url, final JSONObject params, final Parser<T> parser , final Response<T> listener){
+    public void jsonRequest(int method, Context context, final String url, final JSONObject params, final Parser<T> parser , final Response<T> listener){
 
 
         JsonObjectRequest request = new JsonObjectRequest(method, url, params, new com.android.volley.Response.Listener<JSONObject>() {
@@ -113,6 +151,8 @@ public class Service<T>{
             }
         });
 
+
+
         VolleySingleTon.getInstance(context).addToRequesQue(request);
     }
 
@@ -123,7 +163,7 @@ public class Service<T>{
      * It will response {@link Response} with your model,json, and url.
      * */
 
-    public void jsonReqest(int method, Context context, final String url, final JSONArray params, final Parser<T> parser , final Response<T> listener){
+    public void jsonRequest(int method, Context context, final String url, final JSONArray params, final Parser<T> parser , final Response<T> listener){
 
 
         JsonArrayRequest request = new JsonArrayRequest(method, url, params, new com.android.volley.Response.Listener<JSONArray>() {
@@ -142,4 +182,20 @@ public class Service<T>{
     }
 
 
+    /**
+     * To customize your own method
+     * create your request such as JsonRequest, StringRequest
+     * In response method call this method
+     * */
+    public void parseResponse(String response,final String url, final Parser<T> parser , final Response<T> listener){
+        if(parser != null)listener.onServerResponse(parser.parse(response), response,url); else listener.onServerResponse(null, response,url);
+    }
+
+    /**
+     * To print error in log of volley error
+     * call this method in onErrorResponse(VolleyError error)
+     * */
+    public void logError(String url, VolleyError error ){
+        Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+    }
 }

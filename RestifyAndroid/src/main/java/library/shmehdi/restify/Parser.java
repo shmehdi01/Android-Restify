@@ -1,4 +1,4 @@
-package com.shaistech.restify;
+package library.shmehdi.restify;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

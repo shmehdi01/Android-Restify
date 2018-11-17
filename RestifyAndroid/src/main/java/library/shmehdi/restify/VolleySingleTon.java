@@ -1,4 +1,4 @@
-package com.shaistech.restify;
+package library.shmehdi.restify;
 
 /**
  * Created by Syed Hussain Mehdi on 25-03-2018.
