@@ -1,5 +1,7 @@
 package library.shmehdi.restify;
 
+import com.android.volley.VolleyError;
+
 /**
  * Created By Syed Hussain Medhi
  * email : shmehdi01@gmail.com
@@ -17,4 +19,5 @@ public interface Response<Model> {
      * You need to null check if you are passing {@link Parser} as null in {@link Service} model will be null.
      * */
     public void onServerResponse(Model model, String json, String url);
+    public void onErrorResponse(String url, VolleyError error);
 }

@@ -55,6 +55,7 @@ public class Service<T>{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+                listener.onErrorResponse(url,error);
             }
         });
 
@@ -83,6 +84,7 @@ public class Service<T>{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+                listener.onErrorResponse(url,error);
             }
         }){
             @Override
@@ -110,6 +112,7 @@ public class Service<T>{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+                listener.onErrorResponse(url,error);
             }
         }){
             @Override
@@ -148,6 +151,7 @@ public class Service<T>{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+                listener.onErrorResponse(url,error);
             }
         });
 
@@ -176,6 +180,7 @@ public class Service<T>{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG,"Error "+url+" "+(error.networkResponse!=null?"StatusCode : "+error.networkResponse.statusCode:""));
+                listener.onErrorResponse(url,error);
             }
         });
         VolleySingleTon.getInstance(context).addToRequesQue(request);

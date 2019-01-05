@@ -9,6 +9,7 @@ import java.util.List;
  * */
 
 @SuppressWarnings("unchecked")
+@Deprecated
 public class Wrapper<Model> {
 
 
@@ -32,6 +33,7 @@ public class Wrapper<Model> {
     }
 
 
+    @Deprecated
     public class Status {
         private boolean success;
         private String msg;
