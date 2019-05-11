@@ -1,7 +1,3 @@
-# Click Here to watch Video
-[![Watch the video](https://img.youtube.com/vi/dd7z7TNwPaU/hqdefault.jpg)](https://youtu.be/dd7z7TNwPaU)
-
-
 This library will help you to parse easily without any more efforts. 
 
 Note : Make sure you have given INTERNET PERMISSION in manifest.xml
